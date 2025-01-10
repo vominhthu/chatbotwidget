@@ -1,13 +1,18 @@
 import express from 'express';
+import environment from '~/config/environment';
 
 const app = express();
-const hostname = 'localhost';
-const port = 8017;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const { APP_HOST, APP_PORT } = environment;
 
 app.get('/', (req, res) => {
-    res.send('<h1>Welcome to chatbot</h1>');
+    res.status(200).json({
+        message: "Hello world"
+    })
 });
 
-app.listen(port, hostname, () => {
-    console.log(`Server is running at ${hostname}:${port}`);
+app.listen(APP_PORT, APP_HOST, () => {
+    console.log(`Server is running at ${APP_HOST}:${APP_PORT}`);
 });
