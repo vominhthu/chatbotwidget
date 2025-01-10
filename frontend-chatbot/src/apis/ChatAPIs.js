@@ -7,5 +7,13 @@ const apiClient = axios.create({
 });
 
 export const initChatSession = async () => {
-    return await apiClient.get('/');
+    const response = await apiClient.get('/api/v1/chat');
+    return response.data;
+}
+
+export const sendMessage = async (userMessage) => {
+    const response = await apiClient.post('/api/v1/chat', {
+        message: userMessage,
+    })
+    return response.data;
 }

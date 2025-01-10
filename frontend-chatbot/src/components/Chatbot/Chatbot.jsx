@@ -1,22 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FiMessageSquare, FiSend, FiX } from "react-icons/fi";
-import { initChatSession } from  '~/apis/ChatAPIs';
+import { initChatSession, sendMessage } from  '~/apis/ChatAPIs';
 import "./styles.scss";
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
+    const messagesEndRef = useRef(null);
 
     useEffect(() => {
-        initChatSession().then(data => console.log(`data: `, data))
-    }, [])
+        initChatSession().then((data) => setMessages(data.conversation));
+        setInput('');
+    }, []);
+
+    useEffect(() => {
+        if (isOpen) {
+            messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [isOpen, messages]); 
+
     const toggleChat = () => {
         setIsOpen(!isOpen);
     };
 
     const handleSendMessage = async () => {
         if (input.trim() === "") return;
+        const data = await sendMessage(input);
+        setMessages(data.conversation);
+        setInput('');
     };
 
     const handleKeyDown = (e) => {
@@ -49,6 +61,7 @@ const Chatbot = () => {
                             {msg.parts[0].text}
                         </div>
                     ))}
+                    <div ref={messagesEndRef} />
                 </div>
 
                 <div className="chatbot__input">
