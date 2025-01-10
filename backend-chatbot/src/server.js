@@ -3,7 +3,6 @@ import session from 'express-session';
 import cors from 'cors';
 
 // Import configurations
-import environment from '~/config/environment';
 import { corsOptions } from '~/config/cors';
 import { sessionConfig } from '~/config/session';
 
@@ -16,10 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session(sessionConfig));
 app.use(cors(corsOptions));
 
-const { APP_HOST, APP_PORT } = environment;
-
 app.use('/api/v1', API_V1);
 
-app.listen(APP_PORT, APP_HOST, () => {
-    console.log(`Server is running at ${APP_HOST}:${APP_PORT}`);
-});
+export default app;
