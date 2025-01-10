@@ -1,8 +1,8 @@
 import server from './server';
 import environment from '~/config/environment';
 
-const { APP_HOST, APP_PORT } = environment;
+const PORT = environment.APP_PORT || 4000;
 
-server.listen(APP_PORT, APP_HOST, () => {
-    console.log(`Server is running at ${APP_HOST}:${APP_PORT}`);
+server.listen(PORT, () => {
+    console.log(`Server is running at :${PORT}`);
 });
