@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiMessageSquare, FiSend, FiX } from "react-icons/fi";
-// import ChatAPIs from  '../../apis/ChatAPIs';
+import { initChatSession } from  '~/apis/ChatAPIs';
 import "./styles.scss";
 
 const Chatbot = () => {
@@ -8,14 +8,15 @@ const Chatbot = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
 
-
+    useEffect(() => {
+        initChatSession().then(data => console.log(`data: `, data))
+    }, [])
     const toggleChat = () => {
         setIsOpen(!isOpen);
     };
 
     const handleSendMessage = async () => {
         if (input.trim() === "") return;
-        // sendMessage
     };
 
     const handleKeyDown = (e) => {
