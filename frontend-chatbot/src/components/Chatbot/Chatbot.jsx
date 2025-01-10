@@ -16,7 +16,7 @@ const Chatbot = () => {
 
     useEffect(() => {
         if (isOpen) {
-            messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+            messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" });
         }
     }, [isOpen, messages]); 
 
@@ -40,12 +40,12 @@ const Chatbot = () => {
     return (
         <div className="chatbot">
             {/* Floating Chat Button */}
-            <div className="chatbot__toggle" onClick={toggleChat}>
+            <button name="toggleChatBtn" aria-label="toggleChatBtn" className="chatbot__toggle-button" onClick={toggleChat}>
                 <FiMessageSquare size={24} />
-            </div>
+            </button>
 
             {/* Chat Window */}
-            <div className={`chatbot__window ${isOpen ? "" : "hidden"}`}>
+            <div id="chat-window" className={`chatbot__window ${isOpen ? "" : "hidden"}`}>
                 <div className="chatbot__header">
                     <h4>Chatbot</h4>
                     <FiX size={20} className="chatbot__close-button" onClick={toggleChat} />
