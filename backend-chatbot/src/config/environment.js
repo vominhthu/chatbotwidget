@@ -7,5 +7,8 @@ export default {
     REDIS: {
         HOST: process.env.REDIS_HOST,
         PORT: process.env.REDIS_PORT
+    },
+    GEMINI: {
+        API_KEY: process.env.GEMINI_API_KEY,
     }
 }
