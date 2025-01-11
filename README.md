@@ -100,9 +100,9 @@ This project is a floating chatbot widget integrated with a backend API that com
 
 
 ### References links
-[text](https://www.npmjs.com/)
-[text](https://github.com/google-gemini/generative-ai-js)
+[NPM](https://www.npmjs.com/)
+[Github Google Gemini](https://github.com/google-gemini/generative-ai-js)
 
 #### Production links
 
-[text](http://thuvodev.online/)
+[ThuVoDev](http://thuvodev.online/)
