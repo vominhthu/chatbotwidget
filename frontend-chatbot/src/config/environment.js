@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
 
 export default {
-    BACKEND_BASE_URL: 'http://localhost:4000'
+    BACKEND_BASE_URL: process.env.VITE_BACKEND_BASE_URL
 }
